@@ -1,0 +1,27 @@
+<h1> Listing Entries</h1>
+
+<% form_for(Entry.new) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Create' %></p>
+<% end %>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Spent on</th>
+    <th>Hours spent</th>
+  </tr>
+
+  <% for entry in @entries %>
+  <tr>
+    <td><%= h entry.description %></td>
+    <td><%= h entry.spent_on %></td>
+    <td><%= h entry.hours_spent %></td>
+    <td><%= link_to 'Show', entry %></td>
+    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+    <td><%= link_to 'Destroy', entry, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Entry', new_entry_path %></p>

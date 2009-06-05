@@ -1,0 +1,14 @@
+<dl>
+  <dt>Description</dt>
+  <dd><%= h @entry.description %></dd>
+  <dt>Spent on</dt>
+  <dd><%= h @entry.spent_on %></dd>
+  <dt>Hours spent</dt>
+  <dd><%= h @entry.hours_spent %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_entry_path(@entry)%>
+  |
+  <%= link_to 'Back', entries_path %>
+</p>

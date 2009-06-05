@@ -1,0 +1,12 @@
+<h1>Editing Entry</h1>
+
+<% form_for(@entry) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Update' %></p>
+<% end %>
+
+<p>
+  <%= link_to 'Show', @entry %>
+  |
+  <%= link_to 'Back', entries_path %>
+</p>
