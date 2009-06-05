@@ -20,6 +20,6 @@ class Entry < ActiveRecord::Base
   validates_numericality_of :hours_spent
   
   def to_s; description; end
-  
-  def amount_invoiced; hours_spent * project.hourly_rate; end
+  delegate :hourly_rate, :to => :project
+  def amount_invoiced; hours_spent * hourly_rate; end
 end
