@@ -29,7 +29,7 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
   
   pdf.pad(5) do
     pdf.text("<strong>Sold To</strong>", :size => 11)
-    @client.address_lines.each do |line|
+    @project.address_lines.each do |line|
       pdf.text(line, :size => 11)
     end
     pdf.stroke_line([(pdf.bounds.left), (pdf.cursor)], [(pdf.bounds.right),(pdf.cursor)])
@@ -41,6 +41,10 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
       }, :headers => ['<strong>Date</strong>', '<strong>Notes</strong>', '<strong>Hours</strong>']
     )
     pdf.move_down(12)
-    pdf.text("<strong>Total Hours: #{number_with_precision(@entries.inject(0.0){|m,v| m+= v.hours_spent}, 2)}</strong>")
+    pdf.table([
+      ["Total Hours", number_with_precision(@entries.inject(0.0){|m,v| m+= v.hours_spent}, 2)],
+      ["Hourly Rate", number_to_currency(@project.hourly_rate) ],
+      ["<strong>Amount Due</strong>", number_to_currency(@entries.inject(0.0){|m,v| m += v.amount_invoiced }) ]
+    ], :border => 0)
   end
 end

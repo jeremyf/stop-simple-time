@@ -1,8 +1,8 @@
 require 'ostruct'
 class InvoicesController < ApplicationController
   def show
-    @client = Client.find(params[:id], :include => :entries)
-    @entries = @client.entries
+    @project = Project.find(params[:id], :include => :entries)
+    @entries = @project.entries
     respond_to do |format|
       format.pdf  { prawnto :prawn => {}, :inline => true }
     end

@@ -1,0 +1,14 @@
+<dl>
+  <dt>Client</dt>
+  <dd><%= h @project.client_id %></dd>
+  <dt>Name</dt>
+  <dd><%= h @project.name %></dd>
+  <dt>Hourly rate</dt>
+  <dd><%= h @project.hourly_rate %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_project_path(@project)%>
+  |
+  <%= link_to 'Back', projects_path %>
+</p>

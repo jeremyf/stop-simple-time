@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090604005305
+# Schema version: 20090605010700
 #
 # Table name: entries
 #
@@ -9,13 +9,17 @@
 #  hours_spent :float
 #  created_at  :datetime
 #  updated_at  :datetime
+#  project_id  :integer
 #
 
 class Entry < ActiveRecord::Base
-  default_scope :order => "#{quoted_table_name}.spent_on ASC, #{quoted_table_name}.description ASC"
-  belongs_to :client
+  default_scope :order => "#{quoted_table_name}.spent_on DESC, #{quoted_table_name}.description ASC"
+  belongs_to :project
   
-  validates_presence_of :client_id
+  validates_presence_of :project_id, :description, :spent_on, :hours_spent
+  validates_numericality_of :hours_spent
   
   def to_s; description; end
+  
+  def amount_invoiced; hours_spent * project.hourly_rate; end
 end

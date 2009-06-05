@@ -1,6 +1,8 @@
 <%= form.error_messages %>
 
 <dl>
+  <dt><%= form.label :project_id %></dt>
+  <dd><%= form.select :project_id, Project.for_select %></dd>
   <dt><%= form.label :description %></dt>
   <dd><%= form.text_field :description %></dd>
   <dt><%= form.label :spent_on %></dt>
