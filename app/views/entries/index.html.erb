@@ -1,36 +1,28 @@
 <h1> Listing Entries</h1>
 
 <% form_for(Entry.new) do |form| %>
-  <fieldset class="inline">
+  <fieldset class="inline new">
     <ul>
       <li><%= form.label :project_id %><%= form.select :project_id, Project.for_select %></li>
-      <li><%= form.label :spent_on %><%= form.date_select :spent_on %></li>
+      <li><%= form.label :spent_on %><%= form.text_field :spent_on, :size => 10 %></li>
       <li><%= form.label :description %><%= form.text_field :description %></li>
       <li><%= form.label :hours_spent, 'Hours' %><%= form.text_field :hours_spent, :size => 3 %></li>
       <li class="last"><%= form.submit 'Create' %></li>
     </ul>
   </fieldset>
 <% end %>
-
-<table>
-  <tr>
-    <th>Project</th>
-    <th>Spent on</th>
-    <th>Description</th>
-    <th>Hours spent</th>
-  </tr>
-
-  <% for entry in @entries %>
-  <tr>
-    <td><%= link_to h(entry.project), entry.project %></td>
-    <td><%= h entry.spent_on %></td>
-    <td><%= h entry.description %></td>
-    <td><%= h number_with_precision(entry.hours_spent, :precision => 2) %></td>
-    <td><%= link_to 'Show', entry %></td>
-    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-    <td><%= link_to 'Destroy', entry, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<hr />
+<% for entry in @entries %>
+  <% form_for(entry) do |form| %>
+    <fieldset class="inline edit">
+      <ul>
+        <li><%= form.select :project_id, Project.for_select %></li>
+        <li><%= form.text_field :spent_on, :size => 10 %></li>
+        <li><%= form.text_field :description %></li>
+        <li><%= form.text_field :hours_spent, :size => 3 %></li>
+        <li><%= form.submit 'Update' %></li>
+        <li class="last"><%= link_to 'Destroy', entry, {:confirm => 'Are you sure?', :method => :delete, :id => "entry_submit"} %></li>
+      </ul>
+    </fieldset>
   <% end %>
-</table>
-
-<p><%= link_to 'New Entry', new_entry_path %></p>
+<% end %>

@@ -52,7 +52,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
         flash[:notice] = 'Entry was successfully updated.'
-        format.html { redirect_to(@entry) }
+        format.html { redirect_to(entries_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

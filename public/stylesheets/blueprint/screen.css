@@ -211,6 +211,7 @@ hr.space {background:#fff;color:#fff;}
 /* forms.css */
 label {font-weight:bold;}
 fieldset {padding:1.4em;margin:0 0 1.5em 0;border:1px solid #ccc;}
+fieldset.edit {padding: 0.2em 1.4em 0.2em 1.4em;border:0px; margin:0 0 0 0;}
 legend {font-weight:bold;font-size:1.2em;}
 input.text, input.title, textarea, select {margin:0.5em 0;border:1px solid #bbb;}
 input.text:focus, input.title:focus, textarea:focus, select:focus {border:1px solid #666;}
@@ -240,7 +241,7 @@ form li.radio_buton label									{display:inline; margin-right:10px;}
 form fieldset.inline ul								{float:left; width:100%;}
 form fieldset.inline ul li						{float:left; margin-right:20px;}
 form fieldset.inline ul li.last				{margin-right:0;}
-form fieldset.inline #entry_submit				{margin:23px 0 0;}
+form fieldset.inline ul li.last #entry_submit				{margin:23px 0 0;}
 form ul.check_box													{overflow:auto;}
 form li.check_box													{float:left;}
 form input.checkbox												{float:left;}
