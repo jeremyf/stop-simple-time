@@ -38,7 +38,7 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
     pdf.table(
       @entries.group_by(&:spent_on).inject([]) { |mem, (spent_on, spent_on_entries)|
         spent_on_entries.group_by(&:hourly_rate).each { |hourly_rate, entries|
-          mem << [spent_on, entries.to_sentence, number_with_precision(entries.sum(&:hours_spent), :precision => 2), number_to_currency(entries.sum(&:amount_invoiced))]
+          mem << [spent_on, entries.to_sentence, number_with_precision(entries.sum(&:hours_spent), :precision => 2), number_to_currency(entries.sum(&:amount_to_invoice))]
         }
         mem;
       }, :headers => ['<strong>Date</strong>', '<strong>Notes</strong>', '<strong>Hours</strong>', '<strong>Amount</strong>'],
@@ -47,6 +47,6 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
     )
     pdf.move_down(20)
     pdf.text("Total Hours: #{number_with_precision(@entries.inject(0) {|m,v| m+= v.hours_spent}, :precision => 2)}", :size => 15)
-    pdf.text("Amount Due: #{number_to_currency(@entries.inject(0) {|m,v| m += v.amount_invoiced})}", :size => 15)
+    pdf.text("Amount Due: #{number_to_currency(@entries.inject(0) {|m,v| m += v.amount_to_invoice})}", :size => 15)
   end
 end

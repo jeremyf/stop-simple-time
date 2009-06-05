@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :entries
   
   map.invoices '/invoices/:id.:format', :controller => 'invoices', :action => 'show'
+  
+  map.connect '/', :controller => 'entries', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

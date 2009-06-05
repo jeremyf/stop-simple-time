@@ -21,6 +21,6 @@ class Entry < ActiveRecord::Base
   
   def to_s; description; end
   delegate :hourly_rate, :to => :project
-  def amount_invoiced; hours_spent * hourly_rate; end
+  def amount_to_invoice; hours_spent * hourly_rate; end
   def after_initialize; self.spent_on ||= Date.today; end
 end
