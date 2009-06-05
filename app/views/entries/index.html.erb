@@ -16,7 +16,7 @@
   <tr>
     <td><%= h entry.description %></td>
     <td><%= h entry.spent_on %></td>
-    <td><%= h entry.hours_spent %></td>
+    <td><%= h number_with_precision(entry.hours_spent, :precision => 2) %></td>
     <td><%= link_to 'Show', entry %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
     <td><%= link_to 'Destroy', entry, :confirm => 'Are you sure?', :method => :delete %></td>
