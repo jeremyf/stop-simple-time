@@ -1,21 +1,30 @@
 <h1> Listing Entries</h1>
 
 <% form_for(Entry.new) do |form| %>
-  <%= render :partial => 'form', :locals => {:form => form} %>
-  <p><%= form.submit 'Create' %></p>
+  <fieldset class="inline">
+    <ul>
+      <li><%= form.label :project_id %><%= form.select :project_id, Project.for_select %></li>
+      <li><%= form.label :spent_on %><%= form.date_select :spent_on %></li>
+      <li><%= form.label :description %><%= form.text_field :description %></li>
+      <li><%= form.label :hours_spent, 'Hours' %><%= form.text_field :hours_spent, :size => 3 %></li>
+      <li class="last"><%= form.submit 'Create' %></li>
+    </ul>
+  </fieldset>
 <% end %>
 
 <table>
   <tr>
-    <th>Description</th>
+    <th>Project</th>
     <th>Spent on</th>
+    <th>Description</th>
     <th>Hours spent</th>
   </tr>
 
   <% for entry in @entries %>
   <tr>
-    <td><%= h entry.description %></td>
+    <td><%= link_to h(entry.project), entry.project %></td>
     <td><%= h entry.spent_on %></td>
+    <td><%= h entry.description %></td>
     <td><%= h number_with_precision(entry.hours_spent, :precision => 2) %></td>
     <td><%= link_to 'Show', entry %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
