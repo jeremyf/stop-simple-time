@@ -1,0 +1,4 @@
+"Client", "Spent On", "Hours Spent", "Description"
+<%- @entries.each do |entry| -%>
+"<%= entry.client.to_s.gsub('"', '\"') %>", <%= entry.spent_on.to_s %>, <%= entry.hours_spent %>, "<%= entry.description.gsub('"', '\"') %>"
+<%- end -%>
