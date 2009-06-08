@@ -246,3 +246,6 @@ form ul.check_box													{overflow:auto;}
 form li.check_box													{float:left;}
 form input.checkbox												{float:left;}
 form ul li p 															{margin:0 0 6px;}
+
+#menu li {float:left; padding: 0 10px 0 10px;}
+#menu {list-style-type: none;margin-left:-10px;}

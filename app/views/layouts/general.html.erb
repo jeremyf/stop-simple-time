@@ -9,6 +9,12 @@
   <body>
     <div class="container">
       <div id="content" class="column span-24">
+        <ul id="menu">
+          <li><%= link_to "Clients", clients_path %></li>
+          <li><%= link_to "Entries", entries_path %></li>
+          <li><%= link_to "Invoices", invoices_path(Project.find(:first)[:id]) %></li>
+          <li><%= link_to "Projects", projects_path %></li>
+        </ul>
         <% flash.each do |key, value| -%>
           <div class="<%= key %>">
             <%= h(value) %>

@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   def index
-    @entries = Entry.find(:all)
+    @entries = Entry.find(:all, :include => {:project => :client})
 
     respond_to do |format|
       format.html
