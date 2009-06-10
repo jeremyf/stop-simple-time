@@ -1,5 +1,10 @@
 <h1> Listing Entries</h1>
-
+<dl class="inline">
+  <dt>Hours Spent</dt>
+  <dd><%= number_with_precision(Entry.hours_spent,:precision => 2) %></dd>
+  <dt>Amount to Invoice</dt>
+  <dd><%= number_to_currency(Entry.amount_to_invoice) %></dd>
+</dl>
 <% form_for(Entry.new) do |form| %>
   <fieldset class="inline new">
     <ul>
