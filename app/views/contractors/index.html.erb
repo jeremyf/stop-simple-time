@@ -1,0 +1,32 @@
+<h1> Listing Contractors</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Address line 1</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip code</th>
+  </tr>
+
+  <% for contractor in @contractors %>
+  <tr>
+    <td><%= h contractor.email %></td>
+    <td><%= h contractor.phone %></td>
+    <td><%= h contractor.first_name %></td>
+    <td><%= h contractor.last_name %></td>
+    <td><%= h contractor.address_line_1 %></td>
+    <td><%= h contractor.city %></td>
+    <td><%= h contractor.state %></td>
+    <td><%= h contractor.zip_code %></td>
+    <td><%= link_to 'Show', contractor %></td>
+    <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
+    <td><%= link_to 'Destroy', contractor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Contractor', new_contractor_path %></p>

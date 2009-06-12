@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @entries.to_xml(:methods => [:amount_to_invoice], :include => {:project => {:include => :client}}) }
+      format.xml  { render :xml => @entries.to_xml(:methods => [:amount_to_invoice], :include => {:project => {:include => [:client, :contractor]}}) }
       format.csv  
     end
   end

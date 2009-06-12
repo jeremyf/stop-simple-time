@@ -1,19 +1,10 @@
-# pdf.header pdf.margin_box.top_left do
-#   pdf.text(%(<a href="#{polymorphic_url(@agenda.to_polymorphic_route_params)}">#{@agenda.agenda_type}</a>), :size => 30, :style => :bold, :align => :center)
-#   pdf.fill_color('000000')
-#   pdf.stroke_color('000000')
-#   pdf.text(@agenda.meeting_time.to_s(:meeting_time), :size => 12, :align => :center)
-#   pdf.stroke_horizontal_rule
-# end
-# 
-# pdf.footer [pdf.margin_box.left, pdf.margin_box.bottom + 50] do
-#   pdf.stroke_horizontal_rule
-#   pdf.move_down(5)
-#   pdf.text("Generated #{Time.now.to_s(:display_time)}", :align => :center, :size => 9)
-#   pdf.move_down(5)
-#   pdf.text("Page #{pdf.page_count}", :align => :center, :size => 9)
-# end
-# 
+pdf.footer [pdf.margin_box.left, pdf.margin_box.bottom + 50] do
+  pdf.stroke_horizontal_rule
+  pdf.move_down(2)
+  pdf.text("email: #{@project.contractor.email}; phone: #{@project.contractor.phone}")
+  pdf.text("#{@project.contractor.first_name} #{@project.contractor.last_name}; #{@project.contractor.address_line_1}; #{@project.contractor.city}, #{@project.contractor.state} #{@project.contractor.zip_code}")
+end
+
 
 pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.width, :height => pdf.bounds.height - 120) do
   pdf.pad(5) do
@@ -48,5 +39,8 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
     pdf.move_down(20)
     pdf.text("Total Hours: #{number_with_precision(@entries.inject(0) {|m,v| m+= v.hours_spent}, :precision => 2)}", :size => 15)
     pdf.text("Amount Due: #{number_to_currency(@entries.inject(0) {|m,v| m += v.amount_to_invoice})}", :size => 15)
+    
+    pdf.move_down(40)
+    pdf.text("Make all checks payable to: Jeremy Friesen")
   end
 end

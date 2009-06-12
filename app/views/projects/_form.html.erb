@@ -1,8 +1,10 @@
 <%= form.error_messages %>
 
 <dl>
+  <dt><%= form.label :contractor_id %></dt>
+  <dd><%= form.select :contractor_id, Contractor.find(:all).collect{|a| [a.to_s, a[:id]]} %></dd>
   <dt><%= form.label :client_id %></dt>
-  <dd><%= form.text_field :client_id %></dd>
+  <dd><%= form.select :client_id, Client.find(:all).collect{|a| [a.to_s, a[:id]]} %></dd>
   <dt><%= form.label :name %></dt>
   <dd><%= form.text_field :name %></dd>
   <dt><%= form.label :hourly_rate %></dt>

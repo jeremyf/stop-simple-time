@@ -1,0 +1,24 @@
+<dl>
+  <dt>Email</dt>
+  <dd><%= h @contractor.email %></dd>
+  <dt>Phone</dt>
+  <dd><%= h @contractor.phone %></dd>
+  <dt>First name</dt>
+  <dd><%= h @contractor.first_name %></dd>
+  <dt>Last name</dt>
+  <dd><%= h @contractor.last_name %></dd>
+  <dt>Address line 1</dt>
+  <dd><%= h @contractor.address_line_1 %></dd>
+  <dt>City</dt>
+  <dd><%= h @contractor.city %></dd>
+  <dt>State</dt>
+  <dd><%= h @contractor.state %></dd>
+  <dt>Zip code</dt>
+  <dd><%= h @contractor.zip_code %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_contractor_path(@contractor)%>
+  |
+  <%= link_to 'Back', contractors_path %>
+</p>
