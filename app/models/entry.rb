@@ -15,9 +15,23 @@
 class Entry < ActiveRecord::Base
   default_scope :order => "#{quoted_table_name}.spent_on DESC, #{quoted_table_name}.description ASC"
   belongs_to :project
+  has_many :invoice_entry, :foreign_key => 'entry_id', :dependent => :destroy
+  has_many :invoices, :through => :invoice_items
   
   validates_presence_of :project_id, :description, :spent_on, :hours_spent
   validates_numericality_of :hours_spent
+  
+  named_scope :not_invoiced, {
+    :select => "DISTINCT #{quoted_table_name}.*",
+    :joins => "LEFT OUTER JOIN #{InvoiceEntry.quoted_table_name} not_invoiced_invoice_entry ON not_invoiced_invoice_entry.entry_id = #{quoted_table_name}.id",
+    :conditions => "not_invoiced_invoice_entry.entry_id IS NULL"
+  }
+
+
+  named_scope :recorded_on_or_before, lambda {|as_of_date|
+    # Converting as_of_date to tomorrow, so we can guarantee that any entries from today are included
+    {:conditions => ["#{quoted_table_name}.spent_on <= ?", as_of_date.end_of_day]}
+  }
   
   def self.hours_spent
     sum('hours_spent')
@@ -31,4 +45,7 @@ class Entry < ActiveRecord::Base
   delegate :hourly_rate, :to => :project
   def amount_to_invoice; hours_spent * hourly_rate; end
   def after_initialize; self.spent_on ||= Date.today; end
+  def <=>(other)
+    spent_on <=> other.spent_on
+  end
 end

@@ -1,0 +1,33 @@
+<dl>
+  <dt>Project</dt>
+  <dd><%= h @invoice.project %></dd>
+  <dt>Invoice as of date</dt>
+  <dd><%= h @invoice.invoice_as_of_date %></dd>
+</dl>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entry</th>
+      <th>Spent On</th>
+      <th>Hours Spent</th>
+      <th>Amount to Invoice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.entries.sort.each do |entry| %>
+      <tr>
+        <td><%= h(entry) %></td>
+        <td><%= h(entry.spent_on) %></td>
+        <td><%= number_with_precision(entry.hours_spent, :precision => 2) %></td>
+        <td><%= number_to_currency(entry.amount_to_invoice) %></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Edit', edit_invoice_path(@invoice)%>
+  |
+  <%= link_to 'Back', invoices_path %>
+</p>

@@ -39,6 +39,8 @@ Rails::Initializer.run do |config|
   config.gem 'prawn-layout', :version => '0.1.99', :lib => 'prawn'
   config.gem 'prawn-format', :version => '0.1.1', :lib => 'prawn'
   config.gem 'mime-types', :lib => 'mime/types'
+  config.gem "thoughtbot-shoulda", :lib => "shoulda", :version => '2.9.1', :source => "http://gems.github.com"
+  config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :version => '1.1.5', :source => "http://gems.github.com"
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

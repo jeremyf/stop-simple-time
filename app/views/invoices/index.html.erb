@@ -1,0 +1,20 @@
+<h1> Listing Invoices</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Invoice as of date</th>
+  </tr>
+
+  <% for invoice in @invoices %>
+  <tr>
+    <td><%= h invoice.project %></td>
+    <td><%= h invoice.invoice_as_of_date %></td>
+    <td><%= link_to 'Show', invoice %></td>
+    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+    <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Invoice', new_invoice_path %></p>

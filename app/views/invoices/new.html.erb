@@ -1,0 +1,8 @@
+<h1>New Invoice</h1>
+
+<% form_for(@invoice) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <p><%= form.submit 'Create' %></p>
+<% end %>
+
+<p><%= link_to 'Back', invoices_path %></p>

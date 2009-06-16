@@ -1,5 +1,6 @@
 Factory.define :project do |project|
-  project.client_id '1'
+  project.association :client
+  project.association :contractor
   project.name 'MyString'
-  project.hourly_rate '1.5'
+  project.hourly_rate 55.0
 end

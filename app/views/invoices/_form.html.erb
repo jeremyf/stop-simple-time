@@ -1,0 +1,8 @@
+<%= form.error_messages %>
+
+<dl>
+  <dt><%= form.label :project_id %></dt>
+  <dd><%= form.select :project_id, Project.for_select %></dd>
+  <dt><%= form.label :invoice_as_of_date %></dt>
+  <dd><%= form.date_select :invoice_as_of_date %></dd>
+</dl>
