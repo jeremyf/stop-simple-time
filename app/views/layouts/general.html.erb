@@ -13,7 +13,7 @@
           <li><%= link_to "Clients", clients_path %></li>
           <li><%= link_to "Contractors", contractors_path %></li>
           <li><%= link_to "Entries", entries_path %></li>
-          <li><%= link_to "Invoices", invoices_path(Project.find(:first)[:id]) %></li>
+          <li><%= link_to "Invoices", invoices_path %></li>
           <li><%= link_to "Projects", projects_path %></li>
         </ul>
         <% flash.each do |key, value| -%>
