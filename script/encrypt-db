@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# To Decrypt, note this will not overwrite the existing database.
+# openssl des3 -salt -d -in ./db/development.sqlite3.encrypted -out ./db/development.sqlite3.decrypted
+openssl des3 -salt -in ./db/development.sqlite3 -out ./db/development.sqlite3.encrypted
+

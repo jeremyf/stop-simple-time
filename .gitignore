@@ -4,3 +4,6 @@ tmp/**/*
 public/cache/**/*
 doc/api
 doc/app
+db/*.sqlite3
+db/schema.rb
+db/*.sqlite3.decrypted
