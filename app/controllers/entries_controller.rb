@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   def index
-    @entries = (params[:not_invoiced].to_s.any? ? Entry.not_invoiced : Entry).find(:all, :include => {:project => :client})
+    @entry_finder = (params[:not_invoiced].to_s.any? ? Entry.not_invoiced : Entry)
+    @entries = @entry_finder.find(:all, :include => {:project => :client})
 
     respond_to do |format|
       format.html

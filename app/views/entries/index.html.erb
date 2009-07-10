@@ -4,6 +4,7 @@
 <%- else -%>
   <p>Displaying all entries.  <%= link_to 'Show not invoiced', entries_path(:not_invoiced => '1') %></p>
 <%- end -%>
+<p>Invoiceable Amount: <%= number_to_currency(@entry_finder.amount_to_invoice) %></p>
 <% form_for(Entry.new) do |form| %>
   <fieldset class="inline new">
     <ul>
