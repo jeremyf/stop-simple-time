@@ -1,0 +1,1 @@
+openssl des3 -d -salt -out ./db/development.sqlite3 -in ./db/development.sqlite3.encrypted
