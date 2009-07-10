@@ -4,12 +4,14 @@
   <tr>
     <th>Project</th>
     <th>Invoice as of date</th>
+    <th>Invoiceable amount</th>
   </tr>
 
   <% for invoice in @invoices %>
   <tr>
     <td><%= h invoice.project %></td>
     <td><%= h invoice.invoice_as_of_date %></td>
+    <td><%= h number_to_currency(invoice.amount_to_invoice) %></td>
     <td><%= link_to 'Show', invoice %></td>
     <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
     <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>

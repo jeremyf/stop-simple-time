@@ -3,6 +3,8 @@
   <dd><%= h @invoice.project %></dd>
   <dt>Invoice as of date</dt>
   <dd><%= h @invoice.invoice_as_of_date %></dd>
+  <dt>Invoiceable amount</dt>
+  <dd><%= number_to_currency(@invoice.amount_to_invoice) %></dd>
 </dl>
 
 <table>
