@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @invoice }
-      format.pdf  { prawnto :prawn => {}, :inline => true }
+      format.pdf  { prawnto :prawn => {}, :inline => true, :filename => "invoice-#{@invoice[:id]}.pdf" }
     end
   end
 
