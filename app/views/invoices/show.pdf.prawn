@@ -27,10 +27,10 @@ pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 60 ], :width  => pdf.bounds.
   end
   pdf.pad(5) do
     pdf.table(
-      @invoice.entries.group_by(&:spent_on).inject([]) { |mem, (spent_on, spent_on_entries)|
-        spent_on_entries.group_by(&:hourly_rate).each { |hourly_rate, entries|
-          mem << [spent_on, entries.to_sentence, number_with_precision(entries.sum(&:hours_spent), :precision => 2), number_to_currency(entries.sum(&:amount_to_invoice))]
-        }
+      @invoice.entries.group_by(&:spent_on).inject([]) { |mem, (spent_on, entries)|
+          entries.each_with_index { |entry, index|
+            mem << [spent_on, entry, number_with_precision(entry.hours_spent, :precision => 2), number_to_currency(entry.amount_to_invoice)]
+          }
         mem;
       }, 
       :headers => ['<strong>Date</strong>', '<strong>Notes</strong>', '<strong>Hours</strong>', '<strong>Amount</strong>'],
