@@ -4,7 +4,14 @@
 <%- else -%>
   <p>Displaying all entries.  <%= link_to 'Show not invoiced', entries_path(:not_invoiced => '1') %></p>
 <%- end -%>
-<p>Invoiceable Amount: <%= number_to_currency(@entry_finder.amount_to_invoice) %></p>
+<p>
+  <dl>
+    <dt>Invoiceable Amount</dt>
+    <dd><%= number_to_currency(@entry_finder.amount_to_invoice) %></dd>
+    <dt>Hours Spent</dt>
+    <dd><%= number_with_precision(@entry_finder.hours_spent, :precision => 2) %></dd>
+  </dl>
+</p>
 <% form_for(Entry.new) do |form| %>
   <fieldset class="inline new">
     <ul>
