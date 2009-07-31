@@ -8,8 +8,15 @@ class Invoice < ActiveRecord::Base
   delegate :contractor, :address_lines, :to => :project
   delegate :amount_to_invoice, :to => :entries
   
-  
   after_create :auto_assign_entries
+  
+  def self.for_select
+    find(:all).collect{|p| [p.to_s, p[:id]]}
+  end
+  
+  def to_s
+    "Invoice ##{self[:id]} - #{project}"
+  end
   
   protected
   def auto_assign_entries

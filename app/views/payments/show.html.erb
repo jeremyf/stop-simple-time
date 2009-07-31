@@ -1,0 +1,16 @@
+<dl>
+  <dt>Invoice</dt>
+  <dd><%= h @payment.invoice_id %></dd>
+  <dt>Payment amount</dt>
+  <dd><%= h @payment.payment_amount %></dd>
+  <dt>Check number</dt>
+  <dd><%= h @payment.check_number %></dd>
+  <dt>Payment received on</dt>
+  <dd><%= h @payment.payment_received_on %></dd>
+</dl>
+
+<p>
+  <%= link_to 'Edit', edit_payment_path(@payment)%>
+  |
+  <%= link_to 'Back', payments_path %>
+</p>

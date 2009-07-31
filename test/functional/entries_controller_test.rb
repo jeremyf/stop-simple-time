@@ -25,7 +25,7 @@ class EntriesControllerTest < ActionController::TestCase
       @entry = Entry.find(:all).last
     end
     
-    should_redirect_to 'entry_path(@entry)'
+    should_redirect_to 'entries_path'
   end
 
   context 'GET to show' do
@@ -53,7 +53,7 @@ class EntriesControllerTest < ActionController::TestCase
       @entry = Factory(:entry)
       put :update, :id => @entry.id, :entry => Factory.attributes_for(:entry)
     end
-    should_redirect_to 'entry_path(@entry)'
+    should_redirect_to 'entries_path'
   end
 
   context 'DELETE to destroy' do

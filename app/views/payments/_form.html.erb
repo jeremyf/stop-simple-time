@@ -1,0 +1,12 @@
+<%= form.error_messages %>
+
+<dl>
+  <dt><%= form.label :invoice_id %></dt>
+  <dd><%= form.select :invoice_id, Invoice.for_select %></dd>
+  <dt><%= form.label :payment_amount %></dt>
+  <dd><%= form.text_field :payment_amount %></dd>
+  <dt><%= form.label :check_number %></dt>
+  <dd><%= form.text_field :check_number %></dd>
+  <dt><%= form.label :payment_received_on %></dt>
+  <dd><%= form.date_select :payment_received_on %></dd>
+</dl>
