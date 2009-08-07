@@ -31,4 +31,20 @@ class EntryTest < ActiveSupport::TestCase
       entry = Factory.create(:entry)      
     end
   end
+
+  should 'have named scope for not_paid' do
+    @today = Date.today
+    assert_difference 'Entry.not_paid.length', 1 do
+      entry = Factory.create(:entry)
+      Factory.create(:invoice_entry, :entry => entry)
+    end
+
+    assert_difference 'Entry.not_paid.length', 0 do
+      entry = Factory.create(:entry)
+      # Invoice
+      invoice_entry = Factory.create(:invoice_entry, :entry => entry)
+      # Pay it
+      Factory.create(:payment, :invoice => invoice_entry.invoice)
+    end
+  end
 end

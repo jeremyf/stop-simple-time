@@ -26,6 +26,14 @@ class Entry < ActiveRecord::Base
     :joins => "LEFT OUTER JOIN #{InvoiceEntry.quoted_table_name} not_invoiced_invoice_entry ON not_invoiced_invoice_entry.entry_id = #{quoted_table_name}.id",
     :conditions => "not_invoiced_invoice_entry.entry_id IS NULL"
   }
+  
+  named_scope :not_paid, {
+    :select => "DISTINCT #{quoted_table_name}.*",
+    :joins => "LEFT OUTER JOIN #{InvoiceEntry.quoted_table_name} not_invoiced_invoice_entry ON not_invoiced_invoice_entry.entry_id = #{quoted_table_name}.id
+    LEFT OUTER JOIN #{Payment.quoted_table_name} not_paid_payments ON not_paid_payments.invoice_id = not_invoiced_invoice_entry.invoice_id
+    ",
+    :conditions => "not_invoiced_invoice_entry.entry_id IS NULL OR not_paid_payments.invoice_id IS NULL"    
+  }
 
 
   named_scope :recorded_on_or_before, lambda {|as_of_date|

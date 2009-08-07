@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20090731015118
+#
+# Table name: invoices
+#
+#  id                 :integer         not null, primary key
+#  project_id         :integer
+#  invoice_as_of_date :date
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 class Invoice < ActiveRecord::Base
   belongs_to :project
   has_many :invoice_entries, :dependent => :destroy

@@ -5,7 +5,11 @@
   <p>Displaying all entries.  <%= link_to 'Show not invoiced', entries_path(:not_invoiced => '1') %></p>
 <%- end -%>
 <p>
-  <dl>
+  <dl class="summary">
+    <dt>Unpaid Amount</dt>
+    <dd><%= number_to_currency(Entry.not_paid.amount_to_invoice) %></dd>
+    <dt>Unpaid Hours</dt>
+    <dd><%= number_with_precision(Entry.not_paid.hours_spent, :precision => 2) %></dd>
     <dt>Invoiceable Amount</dt>
     <dd><%= number_to_currency(@entry_finder.amount_to_invoice) %></dd>
     <dt>Hours Spent</dt>

@@ -1,14 +1,15 @@
 # == Schema Information
-# Schema version: 20090605010700
+# Schema version: 20090731015118
 #
 # Table name: projects
 #
-#  id          :integer         not null, primary key
-#  client_id   :integer
-#  name        :string(255)
-#  hourly_rate :float
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id            :integer         not null, primary key
+#  client_id     :integer
+#  name          :string(255)
+#  hourly_rate   :float
+#  created_at    :datetime
+#  updated_at    :datetime
+#  contractor_id :integer
 #
 
 class Project < ActiveRecord::Base
