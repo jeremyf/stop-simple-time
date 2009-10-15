@@ -7,6 +7,7 @@ class InvoiceTest < ActiveSupport::TestCase
   should_belong_to :project
   should_have_many :invoice_entries, :dependent => :destroy
   should_have_many :entries
+  should_have_one :payment
   
   
   should 'auto assign entries' do

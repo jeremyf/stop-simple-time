@@ -2,7 +2,7 @@
 
 <dl>
   <dt><%= form.label :invoice_id %></dt>
-  <dd><%= form.select :invoice_id, Invoice.for_select %></dd>
+  <dd><%= form.select :invoice_id, Invoice.unpaid.for_select(@payment.invoice) %></dd>
   <dt><%= form.label :payment_amount %></dt>
   <dd><%= form.text_field :payment_amount %></dd>
   <dt><%= form.label :check_number %></dt>

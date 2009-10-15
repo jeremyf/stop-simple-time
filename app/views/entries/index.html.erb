@@ -1,8 +1,8 @@
 <h1> Listing Entries</h1>
-<% if params[:not_invoiced] %>
-  <p>Displaying all entries that <strong>have not</strong> been invoiced.  <%= link_to 'Show all', entries_path %></p>
+<% if params[:all] %>
+  <p>Displaying all entries.  <%= link_to 'Show not invoiced', entries_path %></p>
 <%- else -%>
-  <p>Displaying all entries.  <%= link_to 'Show not invoiced', entries_path(:not_invoiced => '1') %></p>
+  <p>Displaying all entries that <strong>have not</strong> been invoiced.  <%= link_to 'Show all', entries_path(:all => '1') %></p>
 <%- end -%>
 <p>
   <dl class="summary">
