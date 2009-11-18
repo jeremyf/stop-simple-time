@@ -23,6 +23,7 @@ class Invoice < ActiveRecord::Base
 
   delegate :contractor, :address_lines, :to => :project
   delegate :amount_to_invoice, :to => :entries
+  delegate :hours_spent, :to => :entries
 
   after_create :auto_assign_entries
 

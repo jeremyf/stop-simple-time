@@ -250,3 +250,7 @@ form ul li p 															{margin:0 0 6px;}
 
 #menu li {float:left; padding: 0 10px 0 10px;}
 #menu {list-style-type: none;margin-left:-10px;}
+
+.justify-right {text-align:right;}
+.justify-center {text-align:center;}
+.justify-left {text-align:left;}
