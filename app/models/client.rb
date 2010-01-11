@@ -17,6 +17,6 @@ class Client < ActiveRecord::Base
   def to_s; name; end
   
   def address_lines
-    [name, '2116 W. Wilden Ave. Suite C', 'Goshen, IN, 46526']
+    [name, '118 S. Main St., Ste. 3', 'Goshen, IN, 46526']
   end
 end
