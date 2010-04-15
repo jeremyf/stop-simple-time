@@ -21,6 +21,10 @@ class Entry < ActiveRecord::Base
   validates_presence_of :project_id, :description, :spent_on, :hours_spent
   validates_numericality_of :hours_spent
   
+  named_scope :this_year, lambda {
+    {:conditions => ["#{quoted_table_name}.spent_on >= ? AND #{quoted_table_name}.spent_on <= ?", Date.today.beginning_of_year, Date.today.end_of_year]}
+  }
+  
   named_scope :not_invoiced, {
     :select => "DISTINCT #{quoted_table_name}.*",
     :joins => "LEFT OUTER JOIN #{InvoiceEntry.quoted_table_name} not_invoiced_invoice_entry ON not_invoiced_invoice_entry.entry_id = #{quoted_table_name}.id",
